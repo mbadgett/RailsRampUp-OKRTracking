@@ -1,3 +1,3 @@
 class Iteration < ApplicationRecord
-    has_many :iterations
+    has_many :objectives
 end
