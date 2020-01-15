@@ -9,7 +9,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+  <body id = "okr">
+      <div id = "container">
+         
+         <div id = "header">
+            <h1>OKR Management System</h1>
+            <h3>Library powered by Ruby on Rails</h3>
+         </div>
+         <hr>
+
+         <div id = "content">
+            <%= yield -%>
+         </div>
+
+         <div id = "sidebar"></div>
+         
+      </div>
+   </body>
 </html>

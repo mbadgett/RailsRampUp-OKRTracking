@@ -1,0 +1,11 @@
+<h1><%= @iteration.name %></h1>
+
+<p>
+    <strong>Start Date: </strong><%= @iteration.start_date %><br />
+    <strong>End Date: </strong><%= @iteration.end_date %><br />
+    <strong>Created Date: </strong><%= @iteration.created_at %><br />
+</p>
+
+<hr />
+
+<%= link_to 'Back', {:action => 'list'} %>

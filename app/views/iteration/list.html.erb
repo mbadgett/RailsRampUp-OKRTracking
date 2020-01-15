@@ -1,0 +1,19 @@
+
+<% if @iterations.blank? %>
+<p>There are not any iterations currently in the system.</p>
+<% else %>
+<p>These are the current iterations in our system</p>
+
+<ul id = "iterations" class="item-list">
+   <% @iterations.each do |c| %>
+   <li>
+      <%= link_to c.name, {:action => 'show', :id => c.id} -%>
+      <b>
+         <%= link_to 'Edit', {:action => "edit", :id => c.id} %>
+      </b>
+   </li>
+   <% end %>
+</ul>
+
+<% end %>
+<p><%= link_to "Add new Iteration", {:action => 'new' }%></p>

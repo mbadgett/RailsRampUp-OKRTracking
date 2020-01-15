@@ -1,0 +1,17 @@
+<h1>Add new Iteration</h1>
+
+<%= form_tag :action => 'create' do %>
+
+<p><label for = "iteration_name">Name</label>:
+<%= text_field 'iterations', 'name' %></p>
+
+<p><label for = "iteration_start_date">Start Date</label>:
+<%= date_field 'iterations', 'start_date' %></p>
+
+<p><label for = "iteration_end_date">End Date</label>:
+<%= date_field 'iterations', 'end_date' %></p>
+
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'list'} %>
