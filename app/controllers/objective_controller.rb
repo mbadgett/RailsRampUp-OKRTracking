@@ -8,23 +8,24 @@ class ObjectiveController < ApplicationController
     end
     
     def new
+        @iteration = Iteration.find(params[:iteration_id])
         @objective = Objective.new
-        @iterations = Iteration.all
     end
     
     def create
         @objective = Objective.new(objective_params)
-         
-        if @objective.save
-            redirect_to :action => 'list'
+        
+        if @objective.save!
+            @iteration = Iteration.find(@objective.iteration_id)
+            redirect_to :action => 'show_iterations', :iteration_id => @iteration.id
         else
-            @iterations = Iteration.all
-            render :action => 'new'
+            @iteration = Iteration.find(params[:iteration_id])
+            redirect_to :action => 'new', :iteration_id => @iteration.id
         end
     end
      
     def objective_params
-        params.require(:objectives).permit(:title, :number,:description, :iteration_id)
+        params.require(:objectives).permit(:title, :number, :description, :iteration_id)
     end
     
     def edit
@@ -54,7 +55,7 @@ class ObjectiveController < ApplicationController
     end
 
     def show_iterations
-        @iteration = Iteration.find(params[:id])
+        redirect_to :controller => 'iteration', :action => 'show', :id => params[:iteration_id]
     end
 
 end

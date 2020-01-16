@@ -1,3 +1,26 @@
 // Place all the styles related to the Objective controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#objectives {
+    width: 60%;
+
+    li {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+
+        a {
+            width: 25%;
+            margin-right: 20px;
+        }
+
+        p {
+            width: 50%;
+            margin-right: 50px;
+        }
+
+        b {
+            margin-right: 20px;
+        }
+    }
+}

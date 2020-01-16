@@ -1,0 +1,17 @@
+<h3>Add new objective for <%= @iteration.name %></h3>
+
+<%= form_tag :action => 'create' do %>
+
+<p><label for = "objective_title">Title</label>:
+<%= text_field 'objectives', 'title' %></p>
+
+<p><label for = "objective_number">Number</label>:
+<%= number_field 'objectives', 'number', in: 1..100, step: 1 %></p>
+
+<p><label for = "objective_description">Description</label>:
+<%= text_area 'objectives', 'description' %></p>
+<%= hidden_field 'objectives', 'iteration_id', :value =>@iteration.id %>
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'show_iterations', :id => @iteration.id} %>
