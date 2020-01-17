@@ -1,0 +1,36 @@
+<h3><%= display_objective_name(@objective) %></h3>
+
+<p>
+    <strong>Description: </strong><%= @objective.description %><br />
+    <strong>Iteration: </strong><%= @objective.iteration.name %><br />
+    <strong>Created Date: </strong><%= @objective.created_at %><br />
+</p>
+<ul id="key-results" class="item-list">
+   <% @objective.key_results.each do |c| %>
+    <li>
+        <div class="flex-row">
+            <p><%= link_to display_key_result_name(c), {:controller => "key_result", :action => 'show', :id => c.id} %>:</p>
+            <p class="inline"><%= c.title %></p>
+        </div>
+        <div class="flex-column">
+            <% display_key_result_metric(c).each do |line| %>
+                <p><%= line %></p>
+            <% end %>
+        </div>
+        <b>
+            <%= link_to 'Edit', {:controller => "key_result", :action => "edit", :id => c.id} %>
+        </b>
+        <b>
+            <%= link_to "Delete", {:controller => 'key_result', :action => 'delete', :id => c.id}, data:{ confirm: "Are you sure you want to delete this item?", :disable_with => "Processing..."} %>
+        </b>
+        <hr />
+    </li>
+    <% end %>
+</ul>
+
+<%= link_to "Add key result", {:controller => "key_result", :action => "new", :objective_id => @objective.id} %>
+
+<hr />
+
+<%= link_to 'Back to iteration', {:controller => "iteration", :action => 'show', :id => @objective.iteration_id} %>
+<%= link_to 'Back to all', {:controller => "objective",  :action => 'list'} %>

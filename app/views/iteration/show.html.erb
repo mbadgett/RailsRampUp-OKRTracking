@@ -11,7 +11,7 @@
         <%= link_to display_objective_name(c), {:controller => "objective", :action => 'show', :id => c.id} %>
         <p><%= c.description %></p>
         <b>
-            <%= link_to 'Edit', {:action => "edit", :id => c.id} %>
+            <%= link_to 'Edit', {:controller => "objective", :action => "edit", :id => c.id} %>
         </b>
         <b>
             <%= link_to "Delete", {:controller => 'objective', :action => 'delete', :id => c.id}, data:{ confirm: "Are you sure you want to delete this item?", :disable_with => "Processing..."} %>

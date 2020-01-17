@@ -1,0 +1,24 @@
+<h3>Add a new key result for: <%= @objective.title %></h3>
+
+<%= form_tag :action => 'create' do %>
+
+<p><label for = "key_result_title">Title</label>:
+<%= text_field 'key_results', 'title' %></p>
+
+<p><label for = "key_result_number">Number</label>:
+<%= number_field 'key_results', 'number', in: 1..100, step: 1 %></p>
+
+<p><label for = "key_result_result_type">Result Type</label>:
+<%= select('key_results', 'result_type', get_measurement_type_options_for_select) %></p>
+
+<p><label for = "key_result_measurable">Measurable</label>:
+<%= text_field 'key_results', 'measurable' %></p>
+
+<p><label for = "key_result_measurable">Measurement</label>:
+<%= text_field 'key_results', 'measurement' %></p>
+
+<%= hidden_field 'key_results', 'objective_id', :value =>@objective.id %>
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'show_objectives', :id => @objective.id} %>

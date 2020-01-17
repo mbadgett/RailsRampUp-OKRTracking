@@ -8,17 +8,17 @@ class KeyResultController < ApplicationController
     end
     
     def new
+        @objective = Objective.find(params[:objective_id])
         @key_result = KeyResult.new
-        @iterations = Iteration.all
     end
     
     def create
         @key_result = KeyResult.new(key_result_params)
             
         if @key_result.save
-            redirect_to :action => 'list'
+            redirect_to :action => 'show_objectives', :objective_id => @key_result.objective_id
         else
-            @iterations = Iteration.all
+            @objective = Objective.find(params[:objective_id])
             render :action => 'new'
         end
     end
@@ -29,16 +29,14 @@ class KeyResultController < ApplicationController
     
     def edit
         @key_result = KeyResult.find(params[:id])
-        @iterations = Iteration.all
     end
     
     def update
         @key_result = KeyResult.find(params[:id])
             
         if @key_result.update_attributes(key_result_param)
-            redirect_to :action => 'show', :id => @key_result
+            redirect_to :action => 'show_objectives', :objective_id => @key_result.objective_id
         else
-            @iterations = Iteration.all
             render :action => 'edit'
         end
         
@@ -54,6 +52,6 @@ class KeyResultController < ApplicationController
     end
 
     def show_objectives
-        @objective = Objective.find(params[:id])
+        redirect_to :controller => 'objective', :action => 'show', :id => params[:objective_id]
     end
 end

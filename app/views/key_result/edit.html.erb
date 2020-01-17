@@ -1,0 +1,13 @@
+<h1>Edit Key Result Detail</h1>
+
+<%= form_for @key_result, :url =>{:action => "update", :id =>@key_result} do |f| %>
+    <p>Title: <%= f.text_field 'title' %></p>
+    <p>Number: <%= f.number_field  'number' %></p>
+    <p>Result Type: <%= f.select('result_type', get_measurement_type_options_for_select) %></p>
+    <p>Measurable: <%= f.text_field 'measurable' %></p>
+    <p>Measurement: <%= f.text_field 'measurement' %></p>
+    <%= f.hidden_field :objective_id %>
+    <%= f.submit "Save changes" %>
+<% end %>
+
+<%= link_to 'Back', {:action => 'list' } %>
