@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    root 'iteration#list'
     get 'iteration/list'
     get 'iteration/new'
     post 'iteration/create'
