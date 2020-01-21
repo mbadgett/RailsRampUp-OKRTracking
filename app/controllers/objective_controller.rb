@@ -58,4 +58,8 @@ class ObjectiveController < ApplicationController
         redirect_to :controller => 'iteration', :action => 'show', :id => params[:iteration_id]
     end
 
+    def fake_method_for_pr_tool_demo
+        #dgnbskdjnsekjnae
+    end
+
 end
